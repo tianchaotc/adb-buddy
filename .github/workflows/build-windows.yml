@@ -42,6 +42,10 @@ jobs:
         shell: pwsh
         run: npm test
 
+      - name: Build frontend (required for tauri::generate_context!)
+        shell: pwsh
+        run: npm run build
+
       - name: Run Rust tests
         shell: pwsh
         run: |
