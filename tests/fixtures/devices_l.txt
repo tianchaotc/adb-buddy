@@ -1,0 +1,6 @@
+List of devices attached
+HA0XYY05             device  usb:1-3 product:panther model:Pixel_7 device:panther transport_id:1
+172.16.10.20:5555    offline transport_id:2
+emulator-5554        unauthorized transport_id:3
+
+

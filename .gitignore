@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Tauri / Rust
+src-tauri/target/
+src-tauri/gen/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test coverage
+coverage/
+
+# Generated bindings (regenerated on build)
+src/bindings/*.ts
+!src/bindings/types.ts
+
+# Local settings
+*.local
+
+# WorkBuddy workspace memory (session-local, not source)
+.workbuddy/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Generated vite config artifacts
+vite.config.d.ts
+vite.config.js

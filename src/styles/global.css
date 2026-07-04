@@ -1,0 +1,54 @@
+/* Minimal global styles. Fluent UI handles most theming via tokens. */
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: var(--fontFamilyBase, system-ui, -apple-system, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+code,
+pre {
+  font-family: var(--fontFamilyMonospace, ui-monospace, 'SF Mono', Menlo, monospace);
+}
+
+/* Thin scrollbars to match the desktop feel. */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--colorNeutralStroke1, rgba(0, 0, 0, 0.2));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--colorNeutralStroke1Hover, rgba(0, 0, 0, 0.35));
+}
+
+a {
+  color: var(--colorBrandForegroundLink, #0078d4);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

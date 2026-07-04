@@ -1,0 +1,10 @@
+package:com.android.chrome
+package:com.google.android.gms
+package:com.android.settings
+package:com.example.demo
+package:com.foo.bar
+package:com.test.app
+package:org.wikipedia
+package:io.flutter.demo
+package:com.reactnative.example
+package:com.intellij.ide
