@@ -1,6 +1,6 @@
 [package]
 name = "adb-buddy"
-version = "0.1.0"
+version = "0.1.1"
 description = "ADB Buddy - A Windows GUI for Android ADB"
 authors = ["ADB Buddy"]
 license = "MIT"

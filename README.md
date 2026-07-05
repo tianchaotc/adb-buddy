@@ -149,8 +149,8 @@ npm run typecheck  # tsc --noEmit
 
 ```bash
 npm run tauri:build
-# → src-tauri/target/release/bundle/msi/ADB Buddy_0.1.0_x64_en-US.msi
-# → src-tauri/target/release/bundle/nsis/ADB Buddy_0.1.0_x64-setup.exe
+# → src-tauri/target/release/bundle/msi/ADB Buddy_0.1.1_x64_en-US.msi
+# → src-tauri/target/release/bundle/nsis/ADB Buddy_0.1.1_x64-setup.exe
 ```
 
 Releases are produced automatically by CI when a `v*` tag is pushed —
