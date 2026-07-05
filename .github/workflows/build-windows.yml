@@ -6,6 +6,13 @@ on:
       - "v*"
   workflow_dispatch:
 
+# tauri-action needs to create a GitHub Release on tag push, which requires
+# write access to contents (and the default GITHUB_TOKEN lacks it unless
+# explicitly granted). `packages: write` is for uploads in some scenarios.
+permissions:
+  contents: write
+  packages: write
+
 jobs:
   build-windows:
     runs-on: windows-latest
