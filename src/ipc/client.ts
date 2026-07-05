@@ -1,7 +1,7 @@
 /**
  * Typed wrappers around Tauri `invoke`.
  *
- * One function per `#[tauri::command]` (37 total). In standalone Vite dev
+ * One function per `#[tauri::command]` (38 total). In standalone Vite dev
  * (no Tauri runtime), falls back to the mock layer in `./mock.ts`.
  *
  * Errors are thrown as `AdbError` values — Tauri serializes the Rust

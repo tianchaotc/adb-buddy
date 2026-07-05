@@ -97,7 +97,7 @@ See [docs/architecture.md](docs/architecture.md) for full module structure.
 
 #### Prerequisites
 
-- Node.js 20+ and npm 11+
+- Node.js 20.19+ (or 22.13+/24+) and npm 11+
 - Rust 1.77+ (install via [rustup](https://rustup.rs/))
 - For Windows builds: Windows 10/11 with Visual Studio C++ Build Tools
 
@@ -211,7 +211,7 @@ ADB GUI/
 ├── src-tauri/               # Rust backend
 │   └── src/
 │       ├── adb/             # core ADB abstraction + parsers
-│       ├── commands/        # #[tauri::command] handlers (37 commands)
+│       ├── commands/        # #[tauri::command] handlers (38 commands)
 │       ├── process/         # long-running process registry
 │       ├── history/         # SQLite-backed command history
 │       ├── audit/           # audit log
@@ -256,4 +256,4 @@ raw command that failed.
 
 ## License
 
-TBD — set before public release.
+MIT. See [LICENSE](LICENSE).

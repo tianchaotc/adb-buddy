@@ -45,7 +45,7 @@ spec at
 | File | Responsibility |
 |---|---|
 | `main.rs` | Tauri entry, calls `adb_buddy_lib::run()`. |
-| `lib.rs` | `run()` — registers plugins, manages state (AppSettings, ProcessRegistry, HistoryStore), registers all 37 commands, starts the Tauri runtime. |
+| `lib.rs` | `run()` — registers plugins, manages state (AppSettings, ProcessRegistry, HistoryStore), registers all 38 commands, starts the Tauri runtime. |
 | `error.rs` | `AdbError` enum (14 variants, tagged `kind`/`detail`), `From<io::Error>`, `From<rusqlite::Error>`, `From<serde_json::Error>`. |
 | `adb/mod.rs` | Re-exports submodules. |
 | `adb/models.rs` | All cross-boundary data types: `Device`, `DeviceState`, `Package`, `PackageFilter`, `PackageDetails`, `BatteryInfo`, `DeviceOverview`, `InstallFlags`, `InstallResult`, `CmdResult`, `ScreenshotResult`, `HistoryEntry`, `HistoryFilter`, `LogcatFilters`, `FileEntry`, `AdbVersionInfo`, `AdbConfig`, `ShellPreset`, `ExportFormat`. |
@@ -84,7 +84,7 @@ spec at
 | `main.tsx` | Entry — renders `<App/>` inside `<FluentProvider>` with theme from settings. |
 | `App.tsx` | Router + AppShell layout. |
 | `bindings/types.ts` | Hand-written TS types matching `adb/models.rs` + `error.rs`. `AdbError` is a discriminated union. |
-| `ipc/client.ts` | Typed wrappers around `invoke()` for all 37 commands. |
+| `ipc/client.ts` | Typed wrappers around `invoke()` for all 38 commands. |
 | `ipc/events.ts` | Typed `listen()` wrappers for `logcat://line` and `process://exited`. |
 | `ipc/mock.ts` | Mock IPC layer — used when `window.__TAURI_INTERNALS__` is undefined (standalone Vite dev). Returns canned devices, packages, history, etc. |
 | `store/devices.ts` | Zustand — devices, selectedSerial, loading, error, refresh(), select(), multiSelectMode, selectedSerials. |
