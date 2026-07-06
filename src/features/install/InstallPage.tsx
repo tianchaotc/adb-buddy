@@ -16,6 +16,7 @@ import {
   Checkbox,
   ProgressBar,
   makeStyles,
+  mergeClasses,
   tokens,
   MessageBar,
   MessageBarBody,
@@ -145,7 +146,7 @@ export function InstallPage() {
       <Card className={styles.card}>
         <CardHeader header={<Body1>Drop APK files here or use the picker.</Body1>} />
         <div
-          className={`${styles.dropzone} ${dragOver ? styles.dropzoneActive : ''}`}
+          className={mergeClasses(styles.dropzone, dragOver && styles.dropzoneActive)}
           onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
           onDragLeave={() => setDragOver(false)}
           onDrop={onDrop}

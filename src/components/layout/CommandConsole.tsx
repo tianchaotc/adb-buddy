@@ -9,6 +9,7 @@ import {
   Badge,
   Button,
   makeStyles,
+  mergeClasses,
   tokens,
   ToggleButton,
 } from '@fluentui/react-components';
@@ -123,7 +124,7 @@ export function CommandConsole() {
             </div>
           ) : null}
           {lastCommand.stderr ? (
-            <div className={`${styles.outputBlock} ${styles.stderr}`}>
+            <div className={mergeClasses(styles.outputBlock, styles.stderr)}>
               <strong>stderr:</strong>
               {'\n'}
               {lastCommand.stderr}

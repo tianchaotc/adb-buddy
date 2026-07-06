@@ -4,7 +4,7 @@
  */
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { makeStyles, Tooltip, tokens } from '@fluentui/react-components';
+import { makeStyles, mergeClasses, Tooltip, tokens } from '@fluentui/react-components';
 import {
   BoardRegular,
   BoxRegular,
@@ -120,7 +120,7 @@ export function NavRail() {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                [styles.navItem, isActive ? styles.navItemActive : ''].join(' ')
+                mergeClasses(styles.navItem, isActive && styles.navItemActive)
               }
             >
               <span className={styles.icon}>{item.icon}</span>

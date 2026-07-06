@@ -17,6 +17,7 @@ import {
   MessageBar,
   MessageBarBody,
   makeStyles,
+  mergeClasses,
   tokens,
   Divider,
 } from '@fluentui/react-components';
@@ -155,7 +156,7 @@ export function SettingsPage() {
         </div>
       </Card>
 
-      <Card className={`${styles.card} ${styles.section}`}>
+      <Card className={mergeClasses(styles.card, styles.section)}>
         <CardHeader header={<Subtitle1>Appearance</Subtitle1>} />
         <RadioGroup
           value={theme}
@@ -171,7 +172,7 @@ export function SettingsPage() {
         </Body1>
       </Card>
 
-      <Card className={`${styles.card} ${styles.section}`}>
+      <Card className={mergeClasses(styles.card, styles.section)}>
         <CardHeader header={<Subtitle1>History retention</Subtitle1>} />
         <div className={styles.row}>
           <SpinButton
@@ -186,7 +187,7 @@ export function SettingsPage() {
         </div>
       </Card>
 
-      <Card className={`${styles.card} ${styles.section}`}>
+      <Card className={mergeClasses(styles.card, styles.section)}>
         <CardHeader header={<Subtitle1>Shell favorites</Subtitle1>} image={<StarRegular />} />
         {favorites.length === 0 ? (
           <Body1 style={{ opacity: 0.6 }}>No favorites yet. Add them from the Shell page.</Body1>

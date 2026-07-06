@@ -16,6 +16,7 @@ import {
   Checkbox,
   Tooltip,
   makeStyles,
+  mergeClasses,
   tokens,
   Badge,
 } from '@fluentui/react-components';
@@ -310,11 +311,10 @@ function LogRow({
   idx: number;
   styles: ReturnType<typeof useStyles>;
 }) {
-  const cls = line.isCrash
-    ? `${styles.line} ${styles.crash}`
-    : line.isAnr
-      ? `${styles.line} ${styles.anr}`
-      : styles.line;
+  const cls = mergeClasses(
+    styles.line,
+    line.isCrash ? styles.crash : line.isAnr ? styles.anr : undefined,
+  );
   return (
     <div id={`log-${idx}`} className={cls}>
       <span className={styles.tag}>{line.timestamp}</span>

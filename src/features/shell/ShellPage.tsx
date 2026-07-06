@@ -13,6 +13,7 @@ import {
   Subtitle1,
   Body1,
   makeStyles,
+  mergeClasses,
   tokens,
   Badge,
 } from '@fluentui/react-components';
@@ -252,7 +253,7 @@ export function ShellPage() {
       </Card>
 
       {consoleHistory.length > 0 ? (
-        <Card className={`${styles.card} ${styles.history}`}>
+        <Card className={mergeClasses(styles.card, styles.history)}>
           <CardHeader header={<Subtitle1>Recent commands</Subtitle1>} />
           {consoleHistory.slice(0, 10).map((h, i) => (
             <div

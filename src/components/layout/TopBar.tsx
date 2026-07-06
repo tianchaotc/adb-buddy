@@ -12,6 +12,7 @@ import {
   Badge,
   Input,
   makeStyles,
+  mergeClasses,
   tokens,
 } from '@fluentui/react-components';
 import {
@@ -94,9 +95,10 @@ export function TopBar({ onSearch }: TopBarProps) {
   return (
     <header className={styles.bar}>
       <span
-        className={`${styles.statusDot} ${
-          adbOk ? styles.statusOk : styles.statusErr
-        }`}
+        className={mergeClasses(
+          styles.statusDot,
+          adbOk ? styles.statusOk : styles.statusErr,
+        )}
         title={adbOk ? `adb: ${adbConfig?.path}` : 'adb not found'}
       />
       <PlugConnectedRegular style={{ opacity: 0.7 }} />

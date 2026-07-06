@@ -10,6 +10,7 @@ import {
   Body1,
   Image,
   makeStyles,
+  mergeClasses,
   tokens,
 } from '@fluentui/react-components';
 import { CameraRegular, SaveRegular } from '@fluentui/react-icons';
@@ -149,7 +150,7 @@ export function ScreenshotPage() {
       </Card>
 
       {history.length > 0 ? (
-        <Card className={`${styles.card} ${styles.history}`}>
+        <Card className={mergeClasses(styles.card, styles.history)}>
           <CardHeader header={<Subtitle1>Recent captures</Subtitle1>} />
           {history.map((h) => (
             <div key={h.timestamp} className={styles.row}>
