@@ -164,11 +164,11 @@ see [`.github/workflows/build-windows.yml`](.github/workflows/build-windows.yml)
 # Rust unit + integration tests (51 tests)
 cd src-tauri && cargo test
 
-# Frontend Vitest tests (28 tests)
+# Frontend Vitest tests (29 tests)
 npm test
 
 # Both
-npm run typecheck && (cd src-tauri && cargo check) && npm test && (cd src-tauri && cargo test)
+npm run typecheck && npm run lint && npm run build && npm test && (cd src-tauri && cargo check) && (cd src-tauri && cargo test)
 ```
 
 Test coverage:
@@ -184,6 +184,10 @@ Test coverage:
 - **Frontend `lib/errors.ts`** — `explainError` for each of the 14
   `AdbError` variants.
 - **Frontend `store/devices.ts`** — store reducer logic with mocked IPC.
+- **Frontend `store/logcat.ts`** — mock-mode streaming starts without
+  depending on Tauri event listeners.
+- **Manual mock smoke** — `npm run dev` with mock IPC covers Dashboard,
+  Apps, Shell, Logs, Screenshot, History, and Settings in a browser.
 
 Manual test matrix (not automated):
 
