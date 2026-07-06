@@ -103,6 +103,18 @@ export const useLogcatStore = create<LogcatState>((set, get) => ({
     set({ error: null });
     try {
       const sessionId = await startLogcat(serial, filters);
+
+      if (isMockMode()) {
+        let i = 0;
+        const timer = setInterval(() => {
+          const line = MOCK_LOGCAT_LINES[i % MOCK_LOGCAT_LINES.length];
+          i++;
+          get().appendLine(line);
+        }, 500);
+        set({ running: true, sessionId, _mockTimer: timer, lines: [] });
+        return;
+      }
+
       const unlisten = await onLogcatLine((p) => {
         if (p.session_id !== sessionId) return;
         get().appendLine(p.line);
@@ -116,17 +128,6 @@ export const useLogcatStore = create<LogcatState>((set, get) => ({
         unlistenExit();
       };
       set({ running: true, sessionId, _unlisten: combined, lines: [] });
-
-      // In mock mode, emit lines on a timer so the UI shows streaming output.
-      if (isMockMode()) {
-        let i = 0;
-        const timer = setInterval(() => {
-          const line = MOCK_LOGCAT_LINES[i % MOCK_LOGCAT_LINES.length];
-          i++;
-          get().appendLine(line);
-        }, 500);
-        set({ _mockTimer: timer });
-      }
     } catch (e) {
       set({ error: asAdbError(e), running: false, sessionId: null });
     }
