@@ -20,7 +20,7 @@ visual — without repeatedly typing terminal commands.
 - **Non-blocking** — Long-running operations (logcat, install) stream
   results to the UI via Tauri events.
 - **Safe by default** — Destructive operations (uninstall, clear data,
-  disable system app, delete files, downgrade install) require an explicit
+  disable system app, downgrade install) require an explicit
   confirmation dialog that shows the exact command to be executed.
 - **Multi-device** — Select the active device from the top bar; all
   commands target that serial. Multiple devices are surfaced as a clear
@@ -46,8 +46,7 @@ visual — without repeatedly typing terminal commands.
 | 10 | Command console (always-visible bottom panel) + history page | ✓ |
 
 Out of scope for MVP (deferred per spec §2.9): Fastboot, root-only features,
-full file explorer (only `/sdcard/` + `/data/local/tmp/` browse/pull/push/delete
-in MVP), AI troubleshooting, plugin system, cloud sync, code signing, and the
+file explorer, AI troubleshooting, plugin system, cloud sync, code signing, and the
 remaining full-spec nav items (Network, Permissions, Battery sim, Display,
 Input, Developer Options, Settings Editor).
 
@@ -161,7 +160,7 @@ see [`.github/workflows/build-windows.yml`](.github/workflows/build-windows.yml)
 ## Test
 
 ```bash
-# Rust unit + integration tests (51 tests)
+# Rust unit + integration tests (43 tests)
 cd src-tauri && cargo test
 
 # Frontend Vitest tests (29 tests)
@@ -179,8 +178,6 @@ Test coverage:
 - **Rust history store** — round-trip insert + query + clear against
   in-memory SQLite.
 - **Rust process manager** — register/kill against real subprocesses.
-- **Rust file delete validation** — allow/deny for `/sdcard/` and
-  `/data/local/tmp/` paths, including `..` traversal escape tests.
 - **Frontend `lib/errors.ts`** — `explainError` for each of the 14
   `AdbError` variants.
 - **Frontend `store/devices.ts`** — store reducer logic with mocked IPC.
@@ -215,7 +212,7 @@ ADB GUI/
 ├── src-tauri/               # Rust backend
 │   └── src/
 │       ├── adb/             # core ADB abstraction + parsers
-│       ├── commands/        # #[tauri::command] handlers (38 commands)
+│       ├── commands/        # #[tauri::command] handlers (34 commands)
 │       ├── process/         # long-running process registry
 │       ├── history/         # SQLite-backed command history
 │       ├── audit/           # audit log
@@ -243,7 +240,6 @@ for the full list, including:
 - Uninstall / clear data / force stop
 - Disable system app
 - Install with `-r -d` (downgrade)
-- File delete (`adb shell rm`)
 - Screenshot overwrite
 
 ---

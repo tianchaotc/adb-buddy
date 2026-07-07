@@ -13,7 +13,7 @@ spec at
 │  React Frontend (TS)                                    │
 │  ─ Fluent UI v9 components                              │
 │  ─ Zustand stores (devices, console, history, settings) │
-│  ─ Feature modules: Dashboard, Apps, Files, Logs, Shell  │
+│  ─ Feature modules: Dashboard, Apps, Logs, Shell          │
 └───────────────┬─────────────────────────────────────────┘
                 │  Tauri IPC (invoke + listen)
                 │  Typed via hand-written bindings in src/bindings/
@@ -45,10 +45,10 @@ spec at
 | File | Responsibility |
 |---|---|
 | `main.rs` | Tauri entry, calls `adb_buddy_lib::run()`. |
-| `lib.rs` | `run()` — registers plugins, manages state (AppSettings, ProcessRegistry, HistoryStore), registers all 38 commands, starts the Tauri runtime. |
+| `lib.rs` | `run()` — registers plugins, manages state (AppSettings, ProcessRegistry, HistoryStore), registers all 34 commands, starts the Tauri runtime. |
 | `error.rs` | `AdbError` enum (14 variants, tagged `kind`/`detail`), `From<io::Error>`, `From<rusqlite::Error>`, `From<serde_json::Error>`. |
 | `adb/mod.rs` | Re-exports submodules. |
-| `adb/models.rs` | All cross-boundary data types: `Device`, `DeviceState`, `Package`, `PackageFilter`, `PackageDetails`, `BatteryInfo`, `DeviceOverview`, `InstallFlags`, `InstallResult`, `CmdResult`, `ScreenshotResult`, `HistoryEntry`, `HistoryFilter`, `LogcatFilters`, `FileEntry`, `AdbVersionInfo`, `AdbConfig`, `ShellPreset`, `ExportFormat`. |
+| `adb/models.rs` | All cross-boundary data types: `Device`, `DeviceState`, `Package`, `PackageFilter`, `PackageDetails`, `BatteryInfo`, `DeviceOverview`, `InstallFlags`, `InstallResult`, `CmdResult`, `ScreenshotResult`, `HistoryEntry`, `HistoryFilter`, `LogcatFilters`, `AdbVersionInfo`, `AdbConfig`, `ShellPreset`, `ExportFormat`. |
 | `adb/path.rs` | `resolve_adb(custom)` and `resolve_fastboot(custom)` — uses `which` crate when no custom path is set. |
 | `adb/runner.rs` | `AdbRunner` — builds `[adb, -s, serial, ...args]`, spawns via `tokio::process::Command`, captures stdout/stderr, returns `CmdResult` with full command string for audit. |
 | `adb/parser/mod.rs` | Re-exports parsers. |
@@ -70,7 +70,6 @@ spec at
 | `commands/devices.rs` | `list_devices`, `kill_server`, `start_server`, `reconnect_device`, `reconnect_offline`, `get_device_overview`. |
 | `commands/packages.rs` | `list_packages`, `get_package_details`, `uninstall_package`, `clear_package_data`, `force_stop_package`, `disable_package`, `enable_package`, `pull_apk`, `launch_package`, `open_app_settings`. |
 | `commands/install.rs` | `install_apk`, `cancel_install`. |
-| `commands/files.rs` | `list_files`, `pull_file`, `push_file`, `delete_file`. |
 | `commands/logs.rs` | `start_logcat` (emits `logcat://line` events), `stop_logcat`, `clear_logcat_buffer`. |
 | `commands/shell.rs` | `run_shell`, `list_shell_presets`, `get_shell_favorites`, `add_shell_favorite`, `remove_shell_favorite`. |
 | `commands/screenshot.rs` | `take_screenshot` — `screencap` + `pull`. |
@@ -84,7 +83,7 @@ spec at
 | `main.tsx` | Entry — renders `<App/>` inside `<FluentProvider>` with theme from settings. |
 | `App.tsx` | Router + AppShell layout. |
 | `bindings/types.ts` | Hand-written TS types matching `adb/models.rs` + `error.rs`. `AdbError` is a discriminated union. |
-| `ipc/client.ts` | Typed wrappers around `invoke()` for all 38 commands. |
+| `ipc/client.ts` | Typed wrappers around `invoke()` for all 34 commands. |
 | `ipc/events.ts` | Typed `listen()` wrappers for `logcat://line` and `process://exited`. |
 | `ipc/mock.ts` | Mock IPC layer — used when `window.__TAURI_INTERNALS__` is undefined (standalone Vite dev). Returns canned devices, packages, history, etc. |
 | `store/devices.ts` | Zustand — devices, selectedSerial, loading, error, refresh(), select(), multiSelectMode, selectedSerials. |
@@ -107,7 +106,6 @@ spec at
 | `features/dashboard/DashboardPage.tsx` | Device overview cards. |
 | `features/apps/AppsPage.tsx` | Package list + actions. |
 | `features/install/InstallPage.tsx` | APK installer (drag-drop). |
-| `features/files/FilesPage.tsx` | File browser (limited paths). |
 | `features/logs/LogsPage.tsx` | Logcat viewer. |
 | `features/shell/ShellPage.tsx` | Shell command runner. |
 | `features/screenshot/ScreenshotPage.tsx` | Screenshot capture. |
@@ -120,7 +118,7 @@ spec at
 
 ### Typed commands (request/response)
 
-37 `#[tauri::command]` functions, each returning `Result<T, AdbError>`.
+34 `#[tauri::command]` functions, each returning `Result<T, AdbError>`.
 Frontend calls them via `invoke<Device[]>('list_devices')` and similar.
 The `AdbError` enum serializes as a discriminated union:
 

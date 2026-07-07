@@ -81,26 +81,6 @@ stderr.
 
 ---
 
-## Files
-
-| UI action | Command |
-|---|---|
-| List directory | `adb shell ls -la <path>` |
-| Pull file | `adb pull <remote> <local>` |
-| Push file | `adb push <local> <remote>` |
-| Delete file ⚠️ | `adb shell rm <path>` |
-
-MVP limits browsing to:
-- `/sdcard/`
-- `/sdcard/Download/`
-- `/sdcard/DCIM/`
-- `/sdcard/Android/data/`
-- `/data/local/tmp/`
-
-⚠️ Delete requires confirmation. Protected paths trigger an extra warning.
-
----
-
 ## Logs
 
 | UI action | Command |

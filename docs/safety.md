@@ -20,7 +20,6 @@ data or brick a device requires an explicit confirmation dialog that shows:
 | Force stop | `adb shell am force-stop <package>` | Stops the app immediately; unsaved state lost. |
 | Disable system app | `adb shell pm disable-user --user 0 <package>` | Can break OS features depending on the app. |
 | Install with downgrade | `adb install -r -d <apk>` | Replaces newer with older version; data may be incompatible. |
-| File delete | `adb shell rm <path>` | Permanent deletion. No trash bin on Android. |
 | Screenshot overwrite | (when destination file exists) | Overwrites local file. |
 
 ---
@@ -55,6 +54,3 @@ These will require confirmation when implemented:
 5. **Audit every command.** Every ADB invocation — successful or not — is
    written to the SQLite history with the full command, exit code, duration,
    stdout, and stderr.
-6. **Warn on protected paths.** Browsing `/data/local/tmp/` or
-   `/sdcard/Android/data/` shows a non-blocking warning that these paths
-   have restricted access on modern Android.
