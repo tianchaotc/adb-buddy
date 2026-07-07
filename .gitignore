@@ -37,6 +37,7 @@ src/bindings/*.ts
 
 # WorkBuddy workspace memory (session-local, not source)
 .workbuddy/
+.omo/
 
 # TypeScript build info
 *.tsbuildinfo
