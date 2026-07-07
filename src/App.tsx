@@ -10,7 +10,6 @@ import { AppShell } from '@/components/layout/AppShell';
 import { DashboardPage } from '@/features/dashboard/DashboardPage';
 import { AppsPage } from '@/features/apps/AppsPage';
 import { InstallPage } from '@/features/install/InstallPage';
-import { FilesPage } from '@/features/files/FilesPage';
 import { LogsPage } from '@/features/logs/LogsPage';
 import { ShellPage } from '@/features/shell/ShellPage';
 import { ScreenshotPage } from '@/features/screenshot/ScreenshotPage';
@@ -35,7 +34,6 @@ export default function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/apps" element={<AppsPage />} />
         <Route path="/install" element={<InstallPage />} />
-        <Route path="/files" element={<FilesPage />} />
         <Route path="/logs" element={<LogsPage />} />
         <Route path="/shell" element={<ShellPage />} />
         <Route path="/screenshot" element={<ScreenshotPage />} />

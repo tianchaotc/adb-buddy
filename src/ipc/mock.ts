@@ -14,7 +14,6 @@ import type {
   CmdResult,
   Device,
   DeviceOverview,
-  FileEntry,
   HistoryEntry,
   Package,
   PackageDetails,
@@ -264,22 +263,6 @@ export async function mockInvoke<T>(
     case 'install_apk':
       return { success: true, message: 'Success', code: 'Success' } as unknown as T;
     case 'cancel_install':
-      return undefined as unknown as T;
-    case 'list_files': {
-      const entries: FileEntry[] = [
-        { name: 'DCIM', size: 4096, modified: '', is_dir: true, perms: 'drwxrwx--x' },
-        { name: 'Download', size: 4096, modified: '', is_dir: true, perms: 'drwxrwx--x' },
-        { name: 'Pictures', size: 4096, modified: '', is_dir: true, perms: 'drwxrwx--x' },
-        { name: 'Android', size: 4096, modified: '', is_dir: true, perms: 'drwxrwx--x' },
-        { name: 'README.txt', size: 1234, modified: '', is_dir: false, perms: '-rw-rw-r--' },
-        { name: 'config.json', size: 567, modified: '', is_dir: false, perms: '-rw-rw-r--' },
-      ];
-      return entries as unknown as T;
-    }
-    case 'pull_file':
-      return ((args?.local as string | null) ?? `/downloads/${(args?.remote as string)?.split('/').pop() ?? 'pulled-file'}`) as unknown as T;
-    case 'push_file':
-    case 'delete_file':
       return undefined as unknown as T;
     case 'start_logcat':
       return `mock-session-${Date.now()}` as unknown as T;

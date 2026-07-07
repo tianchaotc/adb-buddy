@@ -15,7 +15,6 @@ import type {
   Device,
   DeviceOverview,
   ExportFormat,
-  FileEntry,
   HistoryEntry,
   HistoryFilter,
   InstallFlags,
@@ -182,42 +181,6 @@ export function installApk(
 /** Cancel an in-flight install by session id (no-op for MVP sync installs). */
 export function cancelInstall(sessionId: string): Promise<void> {
   return call<void>('cancel_install', { session_id: sessionId });
-}
-
-// ─── files ──────────────────────────────────────────────────────────────────
-
-/** `adb shell ls -la <path>` parsed into `FileEntry[]`. */
-export function listFiles(
-  serial: string | null,
-  path: string,
-): Promise<FileEntry[]> {
-  return call<FileEntry[]>('list_files', { serial, path });
-}
-
-/** `adb pull <remote> <local>` → returns the local path. `local` defaults to Downloads. */
-export function pullFile(
-  serial: string | null,
-  remote: string,
-  local: string | null,
-): Promise<string> {
-  return call<string>('pull_file', { serial, remote, local });
-}
-
-/** `adb push <local> <remote>`. */
-export function pushFile(
-  serial: string | null,
-  local: string,
-  remote: string,
-): Promise<void> {
-  return call<void>('push_file', { serial, local, remote });
-}
-
-/** `adb shell rm -f <path>`. */
-export function deleteFile(
-  serial: string | null,
-  path: string,
-): Promise<void> {
-  return call<void>('delete_file', { serial, path });
 }
 
 // ─── logs ───────────────────────────────────────────────────────────────────

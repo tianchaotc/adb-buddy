@@ -163,17 +163,6 @@ export interface LogcatFilters {
   text?: string | null;
 }
 
-/** A single file entry returned by `list_files`. */
-export interface FileEntry {
-  name: string;
-  size: number;
-  /** ISO 8601 modification time. */
-  modified: string;
-  is_dir: boolean;
-  /** Unix-style permission string, e.g. `rwxr-xr-x`. */
-  perms: string;
-}
-
 /** Adb version info returned by `validate_adb`. */
 export interface AdbVersionInfo {
   version: string;
@@ -261,10 +250,6 @@ export type TauriCommand =
   | 'open_app_settings'
   | 'install_apk'
   | 'cancel_install'
-  | 'list_files'
-  | 'pull_file'
-  | 'push_file'
-  | 'delete_file'
   | 'start_logcat'
   | 'stop_logcat'
   | 'clear_logcat_buffer'
