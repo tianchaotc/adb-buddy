@@ -63,11 +63,6 @@ pub fn run() {
             // install
             commands::install::install_apk,
             commands::install::cancel_install,
-            // files
-            commands::files::list_files,
-            commands::files::pull_file,
-            commands::files::push_file,
-            commands::files::delete_file,
             // logs
             commands::logs::start_logcat,
             commands::logs::stop_logcat,

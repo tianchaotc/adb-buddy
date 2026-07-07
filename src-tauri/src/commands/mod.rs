@@ -5,7 +5,6 @@
 //! `tauri::generate_handler!`.
 
 pub mod devices;
-pub mod files;
 pub mod history;
 pub mod install;
 pub mod logs;

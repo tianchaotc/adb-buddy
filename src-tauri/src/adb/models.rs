@@ -254,18 +254,6 @@ pub struct LogcatFilters {
     pub text: Option<String>,
 }
 
-/// A single file entry returned by `list_files`.
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct FileEntry {
-    pub name: String,
-    pub size: u64,
-    /// ISO 8601 modification time.
-    pub modified: String,
-    pub is_dir: bool,
-    /// Unix-style permission string, e.g. `rwxr-xr-x`.
-    pub perms: String,
-}
-
 /// Adb version info returned by `validate_adb`.
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct AdbVersionInfo {
